@@ -17,8 +17,8 @@ class About extends StatelessWidget {
       drawer: DrawerMenu(),
       body: Container(
           margin: EdgeInsets.all(10.0),
-          child: StoreConnector<AppState, AppState>(
-            converter: (store) => store.state,
+          child: StoreConnector<AppState, StyleState>(
+            converter: (store) => store.state.styleState,
             builder: (context, state) {
               return RichText(
                 text: TextSpan(

@@ -2,7 +2,11 @@ import 'package:redux_example/model/app_state.dart';
 import 'package:redux_example/redux/actions.dart';
 
 AppState reducer(AppState prevState, dynamic action) {
-  AppState newState = AppState.fromAppState(prevState);
+  return AppState(styleState: styleReducer(prevState.styleState, action));
+}
+
+StyleState styleReducer(StyleState prevState, dynamic action) {
+  StyleState newState = StyleState.fromStyleState(prevState);
 
   if (action is FontSize) {
     newState.sliderFontSize = action.payload;

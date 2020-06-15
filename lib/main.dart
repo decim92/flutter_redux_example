@@ -8,7 +8,7 @@ import 'package:redux_example/model/app_state.dart';
 import 'package:redux_example/redux/reducers.dart';
 
 void main() {
-  final _initialState = AppState(sliderFontSize: 0.5);
+  final _initialState = AppState(styleState: StyleState(sliderFontSize: 0.5));
   final Store<AppState> _store =
       Store<AppState>(reducer, initialState: _initialState);
   runApp(MyApp(store: _store));

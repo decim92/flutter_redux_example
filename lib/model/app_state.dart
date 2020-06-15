@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
 class AppState {
+  final StyleState styleState;
+
+  AppState({@required StyleState styleState}) : styleState = styleState;
+}
+
+class StyleState {
   double sliderFontSize;
   bool bold;
   bool italic;
 
-  AppState(
+  StyleState(
       {@required this.sliderFontSize, this.bold = false, this.italic = false});
 
-  AppState.fromAppState(AppState another) {
+  StyleState.fromStyleState(StyleState another) {
     sliderFontSize = another.sliderFontSize;
     bold = another.bold;
     italic = another.italic;

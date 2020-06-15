@@ -13,8 +13,8 @@ class Settings extends StatelessWidget {
         title: Text('Settings'),
       ),
       drawer: DrawerMenu(),
-      body: StoreConnector<AppState, AppState>(
-          converter: (store) => store.state,
+      body: StoreConnector<AppState, StyleState>(
+          converter: (store) => store.state.styleState,
           builder: (context, state) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
