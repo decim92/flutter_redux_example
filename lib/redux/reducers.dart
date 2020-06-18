@@ -1,4 +1,4 @@
-import 'package:redux_example/model/app_state.dart';
+import 'package:redux_example/states/app_state.dart';
 import 'package:redux_example/redux/actions.dart';
 
 AppState reducer(AppState prevState, dynamic action) {

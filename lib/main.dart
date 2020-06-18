@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:redux_example/home.dart';
 import 'package:redux_example/about.dart';
 import 'package:redux_example/settings.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:redux_example/model/app_state.dart';
+import 'package:redux_example/states/app_state.dart';
 import 'package:redux_example/redux/reducers.dart';
 
-void main() {
+Future<void> main() async {
+  await DotEnv().load('.env');
   final _initialState = AppState(styleState: StyleState(sliderFontSize: 0.5));
   final Store<AppState> _store =
       Store<AppState>(reducer, initialState: _initialState);

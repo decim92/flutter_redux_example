@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:redux_example/drawer_menu.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux_example/model/app_state.dart';
+import 'package:redux_example/states/app_state.dart';
 
 const kAppTitle = 'States by Redux';
 
