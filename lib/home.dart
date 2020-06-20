@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:redux_example/drawer_menu.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
-import 'package:flutter_redux/flutter_redux.dart';
+import 'package:async_redux/async_redux.dart';
+import 'package:redux_example/redux/actions/comic.dart';
 import 'package:redux_example/states/app_state.dart';
+import 'package:redux_example/view_models/comic.dart';
 
 const kAppTitle = 'States by Redux';
 
@@ -16,23 +17,36 @@ class Home extends StatelessWidget {
         title: Text(kAppTitle),
         backgroundColor: Colors.teal,
       ),
-      drawer: DrawerMenu(),
       body: Container(
         margin: EdgeInsets.all(10),
-        child: StoreConnector<AppState, StyleState>(
-          converter: (store) => store.state.styleState,
-          builder: (context, state) {
-            return RichText(
-              text: TextSpan(
-                text: text,
-                style: TextStyle(
-                  fontSize: state.viewFontSize,
-                  color: Colors.black,
-                  fontWeight: state.bold ? FontWeight.bold : FontWeight.normal,
-                  fontStyle: state.italic ? FontStyle.italic : FontStyle.normal,
+        child: StoreConnector<AppState, ListComicsViewModel>(
+          model: ListComicsViewModel(),
+          onInit: (store) {
+            StoreProvider.dispatch<AppState>(context, GetComicsAction());
+          },
+          builder: (context, viewModel) {
+            return Column(children: [
+              FlatButton(
+                onPressed: () {
+                  viewModel.onGet();
+                },
+                child: Text(
+                  "Get comics",
                 ),
               ),
-            );
+              RichText(
+                text: TextSpan(
+                  text: viewModel.comics.isNotEmpty
+                      ? viewModel.comics.first.name
+                      : 'Loading',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal,
+                    fontStyle: FontStyle.normal,
+                  ),
+                ),
+              )
+            ]);
           },
         ),
       ),

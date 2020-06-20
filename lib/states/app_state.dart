@@ -1,24 +1,29 @@
-import 'package:flutter/material.dart';
+import 'comic_state.dart';
 
 class AppState {
-  final StyleState styleState;
+  final ComicState comicState;
 
-  AppState({@required StyleState styleState}) : styleState = styleState;
-}
+  AppState({
+    this.comicState,
+  });
 
-class StyleState {
-  double sliderFontSize;
-  bool bold;
-  bool italic;
-
-  StyleState(
-      {@required this.sliderFontSize, this.bold = false, this.italic = false});
-
-  StyleState.fromStyleState(StyleState another) {
-    sliderFontSize = another.sliderFontSize;
-    bold = another.bold;
-    italic = another.italic;
+  AppState copy({ComicState comicState}) {
+    return AppState(
+      comicState: comicState ?? this.comicState,
+    );
   }
 
-  double get viewFontSize => sliderFontSize * 30;
+  factory AppState.initial() => AppState(
+        comicState: ComicState.initial(),
+      );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AppState &&
+          runtimeType == other.runtimeType &&
+          comicState == other.comicState;
+
+  @override
+  int get hashCode => comicState.hashCode;
 }

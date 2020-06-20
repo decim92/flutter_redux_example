@@ -1,18 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:redux_example/home.dart';
-import 'package:redux_example/about.dart';
-import 'package:redux_example/settings.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
+import 'package:async_redux/async_redux.dart';
 import 'package:redux_example/states/app_state.dart';
-import 'package:redux_example/redux/reducers.dart';
 
 Future<void> main() async {
   await DotEnv().load('.env');
-  final _initialState = AppState(styleState: StyleState(sliderFontSize: 0.5));
-  final Store<AppState> _store =
-      Store<AppState>(reducer, initialState: _initialState);
+  final _initialState = AppState.initial();
+  final Store<AppState> _store = Store<AppState>(initialState: _initialState);
   runApp(MyApp(store: _store));
 }
 
@@ -22,17 +19,12 @@ class MyApp extends StatelessWidget {
   MyApp({this.store});
 
   @override
-  Widget build(BuildContext context) {
-    return StoreProvider(
+  Widget build(BuildContext context) => StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
         initialRoute: '/',
         routes: {
           '/': (context) => Home(),
-          '/about': (context) => About(),
-          '/settings': (context) => Settings(),
         },
-      ),
-    );
-  }
+      ));
 }
