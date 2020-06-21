@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redux_example/components/cells/comic_grid_cell.dart';
-import 'package:redux_example/models/comic.dart';
+import 'package:redux_example/model/comic/comic.dart';
 
 class ComicGridView extends StatelessWidget {
   final int _gridColumCount = 3;

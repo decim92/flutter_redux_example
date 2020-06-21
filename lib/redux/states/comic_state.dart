@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:collection/collection.dart';
-import 'package:redux_example/models/comic.dart';
+import 'package:redux_example/model/comic/comic.dart';
+import 'package:redux_example/model/comic/detail/issue_detail.dart';
 
 class ComicState {
   List<Comic> comics;

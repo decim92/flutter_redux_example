@@ -7,4 +7,9 @@ class ComicApi {
     String apiKey = EnvMapper.apiKey();
     return http.get('$baseUrl/issues/?api_key=$apiKey&format=json');
   }
+
+  static Future<http.Response> fetchIssueDetail(String url) async {
+    String apiKey = EnvMapper.apiKey();
+    return http.get('$url?api_key=$apiKey&format=json');
+  }
 }

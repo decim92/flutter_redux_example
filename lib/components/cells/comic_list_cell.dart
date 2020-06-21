@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:redux_example/models/comic.dart';
+import 'package:redux_example/model/comic/comic.dart';
+import 'package:redux_example/model_extensions/comic.dart';
 
 class ComicListCell extends StatelessWidget {
   final double _cellHeight = 160.0;
@@ -18,7 +19,7 @@ class ComicListCell extends StatelessWidget {
       padding: _defaultPadding,
       child: Row(
         children: <Widget>[
-          Image.network(comic.imageUrl),
+          Image.network(comic.image.originalUrl),
           Expanded(
             child: Padding(
               padding: _defaultPadding,

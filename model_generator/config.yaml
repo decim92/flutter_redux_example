@@ -1,0 +1,71 @@
+Comic:
+  path: comic/
+  type: object
+  properties:
+    api_detail_url:
+      required: true
+      type: string
+    date_added:
+      required: true
+      type: string
+    name:
+      type: string
+    issue_number:
+      required: true
+      type: string
+    image:
+      required: true
+      type: ComicImage
+    volume:
+      required: true
+      type: ComicVolume
+
+ComicVolume:
+  path: comic/
+  type: object
+  properties:
+    name:
+      required: true
+      type: string
+
+ComicImage:
+  path: comic/
+  type: object
+  properties:
+    original_url:
+      required: true
+      type: string
+
+IssueDetail:
+  path: comic/detail/
+  type: object
+  properties:
+    character_credits:
+      required: true
+      type: array
+      items:
+        type: Credit
+    team_credits:
+      required: true
+      type: array
+      items:
+        type: Credit
+    location_credits:
+      required: true
+      type: array
+      items:
+        type: Credit
+    image:
+      required: true
+      type: ComicImage
+
+Credit:
+  path: comic/detail/
+  type: object
+  properties:
+    name:
+      required: true
+      type: string
+    api_detail_url:
+      required: true
+      type: string

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:redux_example/models/comic.dart';
+import 'package:redux_example/model/comic/comic.dart';
+import 'package:redux_example/model_extensions/comic.dart';
 
 class ComicGridCell extends StatelessWidget {
   final double _titleFontSize = 14.0;
@@ -19,7 +20,7 @@ class ComicGridCell extends StatelessWidget {
       padding: _defaultPadding,
       child: Column(
         children: <Widget>[
-          Image.network(comic.imageUrl),
+          Image.network(comic.image.originalUrl),
           Padding(
             padding: _defaultVerticalPadding,
             child: Column(
