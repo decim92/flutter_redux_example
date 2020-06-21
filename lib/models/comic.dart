@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Comic {
   final String imageUrl;
   final String date;
@@ -9,7 +11,9 @@ class Comic {
   factory Comic.fromJSON(Map<String, dynamic> json) => Comic(
         imageUrl: json['image']['original_url'] as String,
         date: json['date_added'] as String,
-        name: json['name'] as String,
+        name: json['name'] as String != null
+            ? json['name'] as String
+            : json['volume']['name'] as String,
         issueNumber: json['issue_number'] as String,
       );
 
@@ -19,6 +23,15 @@ class Comic {
       comics.add(Comic.fromJSON(itemJson));
     }
     return comics;
+  }
+
+  String issuedName() {
+    return '$name $issueNumber';
+  }
+
+  String readableDate() {
+    DateTime date = DateFormat('yyyy-MM-dd HH:mm:ss', 'en_US').parse(this.date);
+    return DateFormat.yMMMMd('en_US').format(date);
   }
 }
 
