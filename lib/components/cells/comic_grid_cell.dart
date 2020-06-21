@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:redux_example/models/comic.dart';
 
 class ComicGridCell extends StatelessWidget {
-  // final double _cellHeight = 180.0;
   final double _titleFontSize = 14.0;
   final double _dateFontSize = 12.0;
   final EdgeInsets _defaultPadding = EdgeInsets.all(8.0);
   final EdgeInsets _defaultVerticalPadding =
       EdgeInsets.symmetric(vertical: 8.0);
+  final int _maximumLinesForNameText = 3;
 
   final Comic comic;
 
@@ -16,7 +16,6 @@ class ComicGridCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: _cellHeight,
       padding: _defaultPadding,
       child: Column(
         children: <Widget>[
@@ -27,7 +26,7 @@ class ComicGridCell extends StatelessWidget {
               children: <Widget>[
                 Text(
                   comic.issuedName(),
-                  maxLines: 3,
+                  maxLines: _maximumLinesForNameText,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

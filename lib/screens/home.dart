@@ -14,6 +14,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final EdgeInsets _defaultScreenMargins = EdgeInsets.all(0);
+
   bool _isGridViewStyle;
 
   @override
@@ -44,7 +46,7 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: Container(
-        margin: EdgeInsets.all(0),
+        margin: _defaultScreenMargins,
         child: StoreConnector<AppState, ListComicsViewModel>(
           model: ListComicsViewModel(),
           onInit: (store) {
