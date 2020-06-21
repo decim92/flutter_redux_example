@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:redux_example/screens/home.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:redux_example/states/app_state.dart';
+import 'package:redux_example/redux/states/app_state.dart';
 
 Future<void> main() async {
   await DotEnv().load('.env');

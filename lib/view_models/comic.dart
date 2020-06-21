@@ -2,7 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:redux_example/models/comic.dart';
 import 'package:redux_example/redux/actions/comic.dart';
-import 'package:redux_example/states/app_state.dart';
+import 'package:redux_example/redux/states/app_state.dart';
 
 class ListComicsViewModel extends BaseModel<AppState> {
   ListComicsViewModel();
