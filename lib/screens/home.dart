@@ -4,7 +4,7 @@ import 'package:redux_example/components/containers/comic_grid_view.dart';
 import 'package:redux_example/components/containers/comic_list_view.dart';
 import 'package:redux_example/redux/actions/comic.dart';
 import 'package:redux_example/redux/states/app_state.dart';
-import 'package:redux_example/view_models/comic.dart';
+import 'package:redux_example/view_models/home.dart';
 
 const kAppTitle = 'ComicBook';
 

@@ -35,6 +35,9 @@ ComicImage:
     original_url:
       required: true
       type: string
+    screen_large_url:
+      required: true
+      type: string
 
 IssueDetail:
   path: comic/detail/
