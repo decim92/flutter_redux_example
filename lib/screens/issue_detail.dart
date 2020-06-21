@@ -42,24 +42,34 @@ class IssueDetalScreen extends StatelessWidget {
                 children: <Widget>[
                   Image.network(comic.image.screenLargeUrl),
                   Container(
-                    height: creditListSizeFor(
-                        viewModel.detail.characterCredits.length),
+                    height: creditListSizeFor(viewModel.detail != null
+                        ? viewModel.detail.characterCredits.length
+                        : 0),
                     child: CreditListView(
                         title: 'Characters',
-                        credits: viewModel.detail.characterCredits),
+                        credits: viewModel.detail != null
+                            ? viewModel.detail.characterCredits
+                            : []),
                   ),
                   Container(
-                    height:
-                        creditListSizeFor(viewModel.detail.teamCredits.length),
+                    height: creditListSizeFor(viewModel.detail != null
+                        ? viewModel.detail.teamCredits.length
+                        : 0),
                     child: CreditListView(
-                        title: 'Team', credits: viewModel.detail.teamCredits),
+                        title: 'Team',
+                        credits: viewModel.detail != null
+                            ? viewModel.detail.teamCredits
+                            : []),
                   ),
                   Container(
-                    height: creditListSizeFor(
-                        viewModel.detail.locationCredits.length),
+                    height: creditListSizeFor(viewModel.detail != null
+                        ? viewModel.detail.locationCredits.length
+                        : 0),
                     child: CreditListView(
                         title: 'Locations',
-                        credits: viewModel.detail.locationCredits),
+                        credits: viewModel.detail != null
+                            ? viewModel.detail.locationCredits
+                            : []),
                   ),
                 ],
               ),
