@@ -53,6 +53,9 @@ class _HomeState extends State<Home> {
             StoreProvider.dispatch<AppState>(context, GetComicsAction());
           },
           builder: (context, viewModel) {
+            if (viewModel.isLoading) {
+              return Center(child: CircularProgressIndicator());
+            }
             return _isGridViewStyle
                 ? ComicGridView(comics: viewModel.comics)
                 : ComicListView(comics: viewModel.comics);

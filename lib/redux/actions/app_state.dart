@@ -8,4 +8,5 @@ abstract class BaseAction extends ReduxAction<AppState> {
   ComicState get comicState => state.comicState;
   List<Comic> get comics => comicState.comics;
   IssueDetail get issueDetail => comicState.issueDetail;
+  bool get isLoading => state.isLoading;
 }

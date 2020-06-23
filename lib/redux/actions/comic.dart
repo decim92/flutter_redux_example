@@ -4,6 +4,7 @@ import 'package:redux_example/model/comic/comic.dart';
 import 'package:redux_example/model/comic/detail/issue_detail.dart';
 import 'package:redux_example/model_extensions/comic.dart';
 import 'package:redux_example/redux/actions/app_state.dart';
+import 'package:redux_example/redux/actions/loading.dart';
 import 'package:redux_example/redux/states/app_state.dart';
 import 'package:redux_example/redux/states/comic_state.dart';
 
@@ -24,6 +25,16 @@ class GetComicsAction extends BaseAction {
       return null;
     }
   }
+
+  @override
+  void before() {
+    dispatch(LoadingAction(true));
+  }
+
+  @override
+  void after() {
+    dispatch(LoadingAction(false));
+  }
 }
 
 class GetIssueDetailAction extends BaseAction {
@@ -42,5 +53,15 @@ class GetIssueDetailAction extends BaseAction {
     } else {
       return null;
     }
+  }
+
+  @override
+  void before() {
+    dispatch(LoadingAction(true));
+  }
+
+  @override
+  void after() {
+    dispatch(LoadingAction(false));
   }
 }

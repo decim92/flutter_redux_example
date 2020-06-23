@@ -35,46 +35,48 @@ class IssueDetalScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
               )),
-          body: Container(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: <Widget>[
-                  Image.network(comic.image.screenLargeUrl),
-                  Container(
-                    height: creditListSizeFor(viewModel.detail != null
-                        ? viewModel.detail.characterCredits.length
-                        : 0),
-                    child: CreditListView(
-                        title: 'Characters',
-                        credits: viewModel.detail != null
-                            ? viewModel.detail.characterCredits
-                            : []),
+          body: viewModel.isLoading
+              ? Center(child: CircularProgressIndicator())
+              : Container(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: <Widget>[
+                        Image.network(comic.image.screenLargeUrl),
+                        Container(
+                          height: creditListSizeFor(viewModel.detail != null
+                              ? viewModel.detail.characterCredits.length
+                              : 0),
+                          child: CreditListView(
+                              title: 'Characters',
+                              credits: viewModel.detail != null
+                                  ? viewModel.detail.characterCredits
+                                  : []),
+                        ),
+                        Container(
+                          height: creditListSizeFor(viewModel.detail != null
+                              ? viewModel.detail.teamCredits.length
+                              : 0),
+                          child: CreditListView(
+                              title: 'Team',
+                              credits: viewModel.detail != null
+                                  ? viewModel.detail.teamCredits
+                                  : []),
+                        ),
+                        Container(
+                          height: creditListSizeFor(viewModel.detail != null
+                              ? viewModel.detail.locationCredits.length
+                              : 0),
+                          child: CreditListView(
+                              title: 'Locations',
+                              credits: viewModel.detail != null
+                                  ? viewModel.detail.locationCredits
+                                  : []),
+                        ),
+                      ],
+                    ),
                   ),
-                  Container(
-                    height: creditListSizeFor(viewModel.detail != null
-                        ? viewModel.detail.teamCredits.length
-                        : 0),
-                    child: CreditListView(
-                        title: 'Team',
-                        credits: viewModel.detail != null
-                            ? viewModel.detail.teamCredits
-                            : []),
-                  ),
-                  Container(
-                    height: creditListSizeFor(viewModel.detail != null
-                        ? viewModel.detail.locationCredits.length
-                        : 0),
-                    child: CreditListView(
-                        title: 'Locations',
-                        credits: viewModel.detail != null
-                            ? viewModel.detail.locationCredits
-                            : []),
-                  ),
-                ],
-              ),
-            ),
-          ),
+                ),
         );
       },
     );

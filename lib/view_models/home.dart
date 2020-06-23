@@ -9,15 +9,18 @@ class ListComicsViewModel extends BaseModel<AppState> {
 
   List<Comic> comics;
   VoidCallback onGet;
+  bool isLoading;
 
   ListComicsViewModel.build({
     @required this.comics,
     @required this.onGet,
+    @required this.isLoading,
   }) : super(equals: [comics]);
 
   @override
   ListComicsViewModel fromStore() => ListComicsViewModel.build(
         comics: state.comicState.comics,
         onGet: () => dispatch(GetComicsAction()),
+        isLoading: state.isLoading,
       );
 }
