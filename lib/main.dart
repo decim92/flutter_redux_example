@@ -5,6 +5,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:redux_example/screens/home.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:redux_example/redux/states/app_state.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:i18n_extension/i18n_widget.dart';
 
 Future<void> main() async {
   await DotEnv().load('.env');
@@ -22,9 +24,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('en', "US"),
+          const Locale('es'),
+        ],
         initialRoute: '/',
         routes: {
-          '/': (context) => Home(),
+          '/': (context) => I18n(child: Home()),
         },
       ));
 }

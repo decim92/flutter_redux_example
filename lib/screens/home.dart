@@ -5,8 +5,7 @@ import 'package:redux_example/components/containers/comic_list_view.dart';
 import 'package:redux_example/redux/actions/comic.dart';
 import 'package:redux_example/redux/states/app_state.dart';
 import 'package:redux_example/view_models/home.dart';
-
-const kAppTitle = 'ComicBook';
+import 'home.i18n.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -28,7 +27,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(kAppTitle),
+        title: Text('Hi'.i18n + ' ' + 'Goodbye'.i18n),
         backgroundColor: Colors.purple,
         actions: <Widget>[
           IconButton(
